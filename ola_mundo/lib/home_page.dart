@@ -14,15 +14,25 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Page'),
-      actions: [
-        CustomSwitch(),
-      ],
-      ),
+      appBar: AppBar(title: Text('Home Page'), actions: [CustomSwitch()]),
 
-      body: Center(
-        child: CustomSwitch(),
-       
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+
+          children: [
+            Text('Contador:  $counter'),
+            Container(height: 10),
+            CustomSwitch(),
+            Container(height: 50),
+            Row(
+              children: [Container(width: 50, height: 50, color: Colors.black)],
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -40,9 +50,10 @@ class CustomSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Switch(
-                value: AppController.instance.isDartTheme,
-          onChanged: (value) {
-           AppController.instance.changeTheme();
-          },);
+      value: AppController.instance.isDartTheme,
+      onChanged: (value) {
+        AppController.instance.changeTheme();
+      },
+    );
   }
 }
